@@ -1,0 +1,57 @@
+From acf9392448a24762c8cf81e21b28f850f4dbbf76 Mon Sep 17 00:00:00 2001
+From: Brian Dentino <brian.dentino@gmail.com>
+Date: Tue, 13 Sep 2016 19:39:35 -0700
+Subject: Fix for single-element float arrays
+
+Fix a bug for single-element float
+
+bug: https://github.com/tapjs/clean-yaml-object/pull/8
+origin: https://github.com/tapjs/clean-yaml-object/pull/8/commits/d31e35c0a92ef05e51dfdca6f2ce35a2f89d222e
+(cherry picked from commit d31e35c0a92ef05e51dfdca6f2ce35a2f89d222e)
+---
+ index.js | 11 ++++++++++-
+ test.js  |  5 +++++
+ 2 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/index.js b/index.js
+index 77b0816..6ea0ae7 100644
+--- a/index.js
++++ b/index.js
+@@ -41,7 +41,7 @@ function cleanYamlObj(object, filter, isRoot, seen) {
+ 		// Fill in any holes.  This means we lose expandos,
+ 		// but we were gonna lose those anyway.
+ 		if (isArray) {
+-			object = Array.apply(null, object);
++			object = fillHoles(object);
+ 		}
+ 
+ 		var isError = object && typeof object === 'object' && object instanceof Error;
+@@ -90,3 +90,12 @@ function setProp(propName, source, target, seen, filter) {
+ function defaultFilter() {
+ 	return true;
+ }
++
++function fillHoles(arr) {
++	var result = [];
++	for (var i = 0; i < arr.length; i++) {
++		result[i] = arr[i];
++	}
++	return result;
++}
++
+diff --git a/test.js b/test.js
+index de3739b..4d2a6ab 100644
+--- a/test.js
++++ b/test.js
+@@ -32,6 +32,11 @@ test('Array holes are filled', t => {
+ 	t.same(fn(array), ['a', null, null, null, 'c']);
+ });
+ 
++test('Arrays with a single float are safe', t => {
++	const array = [1.5];
++	t.same(fn(array), [1.5]);
++});
++
+ test.cb('Errors have their domain stripped', t => {
+ 	t.plan(2);
+ 

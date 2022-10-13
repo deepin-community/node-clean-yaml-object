@@ -1,0 +1,48 @@
+node-clean-yaml-object (0.1.0-5) unstable; urgency=medium
+
+  * Team upload
+
+  [ lintian-brush ]
+  * Bump debhelper from old 12 to 13
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse
+  * Update standards version to 4.6.0, no changes needed
+
+  [ Yadd ]
+  * Add "Rules-Requires-Root: no"
+  * Add debian/gbp.conf
+  * Fix filenamemangle
+  * Fix GitHub tags regex
+  * Drop dependency to nodejs
+  * Use dh-sequence-nodejs auto install
+  * Enable upstream test using tape instead of ava
+
+ -- Yadd <yadd@debian.org>  Fri, 05 Nov 2021 04:33:01 +0100
+
+node-clean-yaml-object (0.1.0-4) unstable; urgency=medium
+
+  * Move to /usr/share
+  * Bump policy and debhelper
+
+ -- Bastien Roucariès <rouca@debian.org>  Wed, 04 Sep 2019 16:18:32 +0200
+
+node-clean-yaml-object (0.1.0-3) unstable; urgency=medium
+
+  * Bump policy
+  * Move to salsa
+
+ -- Bastien Roucariès <rouca@debian.org>  Fri, 18 May 2018 11:39:54 +0200
+
+node-clean-yaml-object (0.1.0-2) unstable; urgency=medium
+
+  * Bump compat
+  * Bump policy no change
+  * Fix lintian warnings
+
+ -- Bastien Roucariès <rouca@debian.org>  Mon, 19 Feb 2018 00:09:03 +0100
+
+node-clean-yaml-object (0.1.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #872763)
+
+ -- Bastien Roucariès <rouca@debian.org>  Mon, 21 Aug 2017 00:06:17 +0200

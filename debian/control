@@ -1,0 +1,28 @@
+Source: node-clean-yaml-object
+Section: javascript
+Priority: optional
+Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
+Uploaders: Bastien Roucariès <rouca@debian.org>
+Build-Depends: debhelper-compat (= 13)
+ , dh-sequence-nodejs
+ , node-tape <!nocheck>
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.debian.org/js-team/node-clean-yaml-object
+Vcs-Git: https://salsa.debian.org/js-team/node-clean-yaml-object.git
+Homepage: https://github.com/tapjs/clean-yaml-object
+Testsuite: autopkgtest-pkg-nodejs
+Rules-Requires-Root: no
+
+Package: node-clean-yaml-object
+Architecture: all
+Depends: ${misc:Depends}
+Description: safe clean of an object prior to serialization
+ This module clean up (fill with zero byte) an object before sending
+ to serialisation, thus avoiding to serialize private data.
+ This module supports generalisation by allowing ones to specify
+ filter function, that support whitelisting.
+ .
+ Clearing data before serialization is critical from a security
+ point of view in order to avoid leaking information.
+ .
+ Node.js is an event-based server-side JavaScript engine
